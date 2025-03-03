@@ -15,11 +15,12 @@ namespace Server.Controllers
 	public class OrdersController : ControllerBase
 	{
 		private readonly OrderContext _context;
+		private readonly MenuContext _menuContext;
 
-		public OrdersController(OrderContext context)
+		public OrdersController(OrderContext context, MenuContext menuContext)
 		{
 			_context = context;
-
+			_menuContext = menuContext;
 		}
 
 		// GET: api/Orders
@@ -93,8 +94,8 @@ namespace Server.Controllers
 
 				foreach (var itm in order.Food)
 				{
-					//var fd = menuContext.menu.FirstOrDefault(e=> e.id == itm);
-					//stringBuilder.AppendLine($"{fd.Name}.........{fd.Price}\n");
+					var fd = _menuContext.menu.FirstOrDefault(e=> (long)e.id == itm);
+					stringBuilder.AppendLine($"{fd.Name}.........{fd.Price}\n");
 				}
 				;
 			}
