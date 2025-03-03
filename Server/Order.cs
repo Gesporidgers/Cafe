@@ -2,14 +2,15 @@
 {
 	public class Order
 	{
-		public long id { get; set; }
-		public enum Status
+		public long Id { get; set; }
+		public enum status
 		{
 			Placed,
 			Preparing,
 			Out,
 			Completed
 		}
-		public List<int> food { get; set; }
+		public int[] Food { get; set; }
+		public status Status { get; set; }
 	}
 }
