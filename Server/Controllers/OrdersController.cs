@@ -34,7 +34,7 @@ namespace Server.Controllers
 
 		// PUT: api/Orders/5
 		// To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-		[HttpPut("{id}")]
+		[HttpOptions("{id}")]
 		public async Task<IActionResult> ChangeStatus(long id, Order.status futureStatus)
 		{
 			var order = await _context.orders.FindAsync(id);
