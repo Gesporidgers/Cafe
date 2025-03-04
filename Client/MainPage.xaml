@@ -7,8 +7,8 @@
         <VerticalStackLayout
             Padding="30,0" Spacing="15"  VerticalOptions="Center">
             <Label Text="Введите никнейм" HorizontalOptions="Fill"/>
-            <Entry Placeholder="Ввести сюда..." HorizontalOptions="Fill"></Entry>
-            <Button Text="Войти"></Button>
+            <Entry Placeholder="Ввести сюда..." HorizontalOptions="Fill" x:Name="uname"></Entry>
+            <Button Text="Войти" Clicked="Button_Clicked"></Button>
         </VerticalStackLayout>
     </ScrollView>
 
