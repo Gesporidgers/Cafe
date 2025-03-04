@@ -27,6 +27,12 @@ namespace Server.Controllers
             return await _context.users.ToListAsync();
         }
 
+        [HttpGet("{name}")]
+        public async Task<ActionResult<bool>> CheckUser(string name)
+        {
+            return UserExists(name);
+        }
+        
         // GET: api/Users/5
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(long id)
@@ -72,6 +78,11 @@ namespace Server.Controllers
         private bool UserExists(long id)
         {
             return _context.users.Any(e => e.Id == id);
+        }
+
+        private bool UserExists(string name)
+        {
+            return _context.users.Any(e => e.Name == name);
         }
     }
 }
