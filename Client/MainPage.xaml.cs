@@ -6,7 +6,7 @@ namespace Client
 {
 	public partial class MainPage : ContentPage
 	{
-		
+
 		HttpClient httpClient = new HttpClient();
 		public MainPage()
 		{
@@ -15,15 +15,13 @@ namespace Client
 
 		private async void Button_Clicked(object sender, EventArgs e)
 		{
-			var resp = await httpClient.GetStringAsync("https://localhost:7032/api/Users");
-			
-			var users = JsonSerializer.Deserialize<User[]>(resp, new JsonSerializerOptions(JsonSerializerDefaults.Web));
-
-			if (users.FirstOrDefault(e => e.Name == uname.Text) != null)//переделать на сторону сервера, чтобы возвращалась булева
+			string nm = uname.Text;
+			try
 			{
+				var resp = await httpClient.GetFromJsonAsync<User>("https://localhost:7032/api/Users/" + nm);
 				await Navigation.PushAsync(new WaiterPage());
 			}
-			else
+			catch (HttpRequestException ex)
 			{
 				await DisplayAlert("Ошибка", "Пользователя с таким именем не существует", "ОК");
 			}

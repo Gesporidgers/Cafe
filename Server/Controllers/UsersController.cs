@@ -28,24 +28,18 @@ namespace Server.Controllers
         }
 
         [HttpGet("{name}")]
-        public async Task<ActionResult<bool>> CheckUser(string name)
+        public async Task<ActionResult<User>> CheckUser(string name)
         {
-            return UserExists(name);
-        }
+            var user = _context.users.FirstOrDefault(e => e.Name == name);
+
+			if (user == null)
+			{
+				return NotFound();
+			}
+
+			return user;
+		}
         
-        // GET: api/Users/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(long id)
-        {
-            var user = await _context.users.FindAsync(id);
-
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            return user;
-        }
 
 
         // POST: api/Users
@@ -75,14 +69,14 @@ namespace Server.Controllers
             return NoContent();
         }
 
-        private bool UserExists(long id)
-        {
-            return _context.users.Any(e => e.Id == id);
-        }
+        //private bool UserExists(long id)
+        //{
+        //    return _context.users.Any(e => e.Id == id);
+        //}
 
-        private bool UserExists(string name)
-        {
-            return _context.users.Any(e => e.Name == name);
-        }
+        //private bool UserExists(string name)
+        //{
+        //    return _context.users.Any(e => e.Name == name);
+        //}
     }
 }
