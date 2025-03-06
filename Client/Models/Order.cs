@@ -11,6 +11,7 @@
 			Completed
 		}
 		public int[] Food { get; set; }
+		// Dictionary<int, int> Food
 		public status Status { get; set; }
 	}
 }

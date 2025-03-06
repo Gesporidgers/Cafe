@@ -64,8 +64,9 @@ namespace Server.Controllers
 			Console.WriteLine(order.Id);
 			foreach (var item in order.Food)
 				Console.WriteLine(item);
+            //Console.WriteLine(item.Key + " : " + item.Value);
 
-			return order;
+            return order;
 		}
 
 		// DELETE: api/Orders/5
@@ -95,7 +96,9 @@ namespace Server.Controllers
 				foreach (var itm in order.Food)
 				{
 					var fd = _menuContext.menu.FirstOrDefault(e=> (long)e.id == itm);
-					stringBuilder.AppendLine($"{fd.Name}.........{fd.Price}\n");
+                    // var fd = _menuContext.menu.FirstOrDefault(e => (long)e.id == itm.Key);
+
+                    stringBuilder.AppendLine($"{fd.Name}.........{fd.Price}\n");
 				}
 				;
 			}

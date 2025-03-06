@@ -11,7 +11,8 @@ namespace Client
 		public MainPage()
 		{
 			InitializeComponent();
-		}
+            BindingContext = new WaiterBrainVM();
+        }
 
 		private async void Button_Clicked(object sender, EventArgs e)
 		{
