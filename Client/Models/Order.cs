@@ -1,4 +1,6 @@
-﻿namespace Server
+﻿using Java.Util.Functions;
+
+namespace Client.Models
 {
 	public class Order
 	{
@@ -10,8 +12,17 @@
 			Out,
 			Completed
 		}
-		public int[] Food { get; set; }
-		// Dictionary<int, int> Food
+		public Dictionary<long, uint> Food { get; set; }
 		public status Status { get; set; }
+
+		public static explicit operator Order(List<FoodItem> items)
+		{
+			var dict = new Dictionary<long, uint>();
+			foreach (var item in items)
+			{
+				dict.Add(item.id, item.Quantity);
+			}
+			return new Order { Id = 0, Food = dict, Status=status.Placed };
+		}
 	}
 }
