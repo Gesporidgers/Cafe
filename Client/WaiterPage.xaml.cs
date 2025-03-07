@@ -11,6 +11,6 @@ public partial class WaiterPage : ContentPage
 	{
 		//mm = vm.Menu;
 		InitializeComponent();
-		menuList.ItemsSource = vm.Menu;
+		BindingContext = vm;
 	}
 }
