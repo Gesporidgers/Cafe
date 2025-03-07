@@ -1,4 +1,4 @@
-﻿namespace Server
+﻿namespace Client.Models
 {
 	public class FoodItem
 	{
