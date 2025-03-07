@@ -22,7 +22,7 @@
                                     <RowDefinition Height="60"></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <Label Grid.Column="0" Text="{Binding Path=Name}" Padding="10"></Label>
-                                <Stepper x:Name="_stepper" Grid.Column="1" Minimum ="0" Maximum="10" Increment ="1" VerticalOptions = "Center"/>
+                                <Stepper x:Name="_stepper" Grid.Column="1" Minimum ="0" Maximum="10" Increment ="1" VerticalOptions = "Center" Value="{Binding Path=Quantity}"/>
                                 <Label Grid.Column="2" Text="{Binding x:DataType='Stepper', Source={x:Reference _stepper}, Path=Value}"
                HorizontalOptions="Center"
                VerticalOptions="Center" />
